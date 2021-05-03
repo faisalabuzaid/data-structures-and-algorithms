@@ -12,4 +12,15 @@ Each day, you'll add one new file to this folder to do your work for the day's a
 
 ### 401 Data Structures, Code Challenges
 
-- Please follow the instructions specific to your 401 language, which can be found in the directory below, matching your course.
+# Reverse an Array
+<!-- Short summary or background information -->
+
+## Challenge
+This function take any list of items, and return the reverse of it.
+
+## Approach & Efficiency
+ for the chellenge it was normal but for the test I havn't made it as the first time making test until the instructor explain how to, so it's normal now also
+
+## Solution
+
+![whiteboeard](./python/assests/class1.png)
