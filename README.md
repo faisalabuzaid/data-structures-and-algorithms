@@ -24,3 +24,17 @@ This function take any list of items, and return the reverse of it.
 ## Solution
 
 ![whiteboeard](./python/assests/class1.png)
+
+# Shift an Array
+<!-- Short summary or background information -->
+
+## Challenge
+This function take any list and value, and return the list with the value in the middle of it.
+
+## Approach & Efficiency
+ I check for length of the list to determine the index i will insert the value in, it takes me 1 hour 
+
+## Solution
+
+![whiteboeard](./python/assests/array_shift.png)
+
