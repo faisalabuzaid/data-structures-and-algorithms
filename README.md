@@ -38,3 +38,26 @@ This function take any list and value, and return the list with the value in the
 
 ![whiteboeard](./python/assests/array_shift.png)
 
+# Array Binary Search
+<!-- Short summary or background information -->
+
+## Challenge
+Write a function called BinarySearch which takes in 2 parameters: a sorted array and the search key.return the index of the array’s element that is equal to the search key, or -1 if the element does not exist.
+
+## Approach & Efficiency
+ 1 : create the function with two arguments
+
+2 : create a result by default equal to -1 and counter =0
+
+3 : loop through the list and counter will increment 1 each time
+
+4 : if the key inserted was zero ill return the first item and break the loop
+
+5 : if key is bigger than zero ill continuo loop until counter reach the value of key minus one and ill break and return the item
+
+it take me two hours
+
+## Solution
+
+![whiteboeard](./python/assests/class3.png)
+
