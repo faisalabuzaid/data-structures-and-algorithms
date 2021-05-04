@@ -1,12 +1,17 @@
 def insertShiftArray(list,value):
     """ this function will insert value in the middle of a list  """
-    num = len(list)/2
+    result = []
     if not len(list)%2:
-        list.insert(int(num), value)
+        num=int(len(list)/2)
     else:
-        list.insert((int(num)+1), value)
-    return list
+        num=int(len(list)/2) + 1
 
-
-
-
+    for item in list:
+        if len(result) < num  :
+            result.append(item)
+        elif len(result) == num:
+            result.append(value)
+            result.append(item)
+        else:
+            result.append(item)
+    return result
