@@ -61,3 +61,31 @@ it take me two hours
 
 ![whiteboeard](./python/assests/class3.png)
 
+# Linked Lists
+<!-- Short summary or background information -->
+
+## Challenge
+Write a clsses and some methods to create linked list and to test them
+
+## Approach & Efficiency
+ 1 : create the Node class and the constructor method for it.
+
+2 : create the Linked list class and the constructor methos, the insert method, the inclde method, and finally the str method
+
+3 : in constructor method I set the head to none, and in the insert method
+    3:a I add a new node with the value argument
+    3:b if there are a head we will set our current pointer to the head
+    3:c i'll loop while there are following node to the current node 
+    3:d when I finish I'll assign new node value as the next value for the head
+    3:e if there are no head and one value entered we will set it as the head
+
+4 : in the include method ill loop in the values of the linked list and check each one
+
+5 : in the str method ill loop also iin the linked list and store each item on pre built empty string variable and return the result string
+
+it take me three hours
+
+## Solution
+
+![whiteboeard](./python/assests/class3.png)
+
