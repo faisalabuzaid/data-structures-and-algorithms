@@ -1,6 +1,6 @@
 class Node:
 
-    def __init__(self, value=None):
+    def __init__(self, value=None, next=None):
         self.value = value
         self.next = None
   # use a magic method so when you print node you see it's value
@@ -16,20 +16,8 @@ class LinkedList():
     # define my insert method
     def insert (self, data):
         new_node = Node(data)
-    # Once we have a head 
-        if self.head :
-            # set our current pointer to the head
-            current = self.head 
-            # while there is a following node that's not None
-            while (current.next):
-                # move to the next node
-                current = current.next
-      
-                # Assign new_node to current.next
-            current.next = new_node
-        else:
-            #Assign new_node to self.head 
-            self.head = new_node
+        new_node.next = self.head
+        self.head = new_node       
 
     def include(self, value):
         """method to check if the given value is in the linked list"""
@@ -40,7 +28,7 @@ class LinkedList():
             else:
                 current = current.next
         return False
-    # __str__ , __repr__
+
     def __str__(self):
         """ returns a string representing all the values in the Linked List, formatted as:
         "{ a } -> { b } -> { c } -> NULL"
