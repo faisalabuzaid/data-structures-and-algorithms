@@ -85,7 +85,9 @@ Write a clsses and some methods to create linked list and to test them
 
 it take me three hours
 
-## Solution
+## API
 
-![whiteboeard](./python/assests/class3.png)
-
+- The constructor method, to assign the head.value
+- The insert method to insert a new node at the begining of linked lists
+- the include method to check if a given value is included at the linked list
+- str method to return result as readable string
