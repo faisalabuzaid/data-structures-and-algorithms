@@ -91,3 +91,14 @@ it take me three hours
 - The insert method to insert a new node at the begining of linked lists
 - the include method to check if a given value is included at the linked list
 - str method to return result as readable string
+
+# Linked Lists II
+<!-- Short summary or background information -->
+
+## Challenge
+
+
+## Approach & Efficiency
+ 
+
+## Solution
