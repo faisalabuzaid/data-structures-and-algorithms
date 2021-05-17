@@ -28,6 +28,23 @@ class LinkedList():
             else:
                 current = current.next
         return False
+        
+    def insertBefore(self, search_value, new_value):
+        if self.head == None:
+          return "The value is not exist"
+
+        new_node = Node(new_value)
+        current = self.head
+        if search_value == current.value:
+          self.head = new_node
+          self.head.next = current
+          return "The search value is not exist"
+        while current.next:
+          if current.next.value == search_value:
+            new_node.next = current.next
+            current.next = new_node
+            break
+          current = current.next
 
     def kthFromEnd(self, k):
         current = self.head
