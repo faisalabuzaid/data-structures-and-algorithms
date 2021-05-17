@@ -49,3 +49,17 @@ def test_includes_false(linked_list):
 
 def test__str__method(linked_list):
     assert linked_list.__str__() == "{ ['a', 'l', 'i', 7, 3] } -> { and } -> { here } -> { am } -> { I } ->  Null"
+
+def test_kthFromEnd(linked_list):
+    print(linked_list)
+    # print(linked_list)
+    actual = linked_list.kthFromEnd(1)
+    excpected = 'am'
+    assert excpected == actual
+
+def test_kthFromEnd2(linked_list):
+    # print(linked_list)
+    actual = linked_list.kthFromEnd(88)
+    print(actual)
+    excpected = 'Sorry, the value is larger than the linked list'
+    assert excpected == actual

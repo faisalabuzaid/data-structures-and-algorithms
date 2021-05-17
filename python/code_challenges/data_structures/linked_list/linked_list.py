@@ -29,6 +29,27 @@ class LinkedList():
                 current = current.next
         return False
 
+    def kthFromEnd(self, k):
+        current = self.head
+        count = 0
+        
+        while current.next:
+            current = current.next
+            count += 1
+
+        if k > count:
+            return("Sorry, the value is larger than the linked list")
+
+        if k > count:
+            raise Exception("Sorry, the value is larger than the linked list")
+      
+
+        current = self.head
+        for i in range(count - k):
+            current = current.next
+        print(current.value)
+        return current.value
+
     def __str__(self):
         """ returns a string representing all the values in the Linked List, formatted as:
         "{ a } -> { b } -> { c } -> NULL"
