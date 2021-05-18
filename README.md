@@ -92,6 +92,18 @@ it take me three hours
 - the include method to check if a given value is included at the linked list
 - str method to return result as readable string
 
+<<<<<<< HEAD
+# Linked Lists II
+<!-- Short summary or background information -->
+
+## Challenge
+
+
+## Approach & Efficiency
+ 
+
+## Solution
+=======
 ## Code challenge 7
 
 function to get a node value with a given reverse index
@@ -113,3 +125,4 @@ function to get a node value with a given reverse index
 ## WhiteBoard 
 
 ![](./python/assests/lab7.png)
+>>>>>>> master

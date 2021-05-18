@@ -1,5 +1,5 @@
 import pytest
-from code_challenges.data_structures.linked_list.linked_list import LinkedList, Node
+from data_structures.linked_list.linked_list import LinkedList, Node
 
 def test_empty_linked_list():
     linked_list = LinkedList()
@@ -51,8 +51,6 @@ def test__str__method(linked_list):
     assert linked_list.__str__() == "{ ['a', 'l', 'i', 7, 3] } -> { and } -> { here } -> { am } -> { I } ->  Null"
 
 def test_kthFromEnd(linked_list):
-    print(linked_list)
-    # print(linked_list)
     actual = linked_list.kthFromEnd(1)
     excpected = 'am'
     assert excpected == actual
@@ -63,3 +61,48 @@ def test_kthFromEnd2(linked_list):
     print(actual)
     excpected = 'Sorry, the value is larger than the linked list'
     assert excpected == actual
+
+def test_append(linked_list):
+    assert "d, 4, b, a, z" == linked_list.append('z')
+
+def test_append_to_empty(linked_list):
+    assert "z" == linked_list.append('z')
+
+def test_insert_before_value_in_list(linked_list):
+    actual = linked_list.insert_before("and", 3)
+    expected = "{ ['a', 'l', 'i', 7, 3] } -> { 3 } -> { and } -> { here } -> { am } -> { I } ->  Null"
+
+    assert actual == expected
+
+def test_insert_before_value_not_in_list(linked_list):
+    assert 'Value is not in the list' == linked_list.insert_before('e', 3)
+
+def test_insert_before_to_empty_list(linked_list):
+    assert 'Value is not in the list' == linked_list.insert_before('e', 3)
+
+def test_insert_after_value_in_list(linked_list):
+
+    assert "d, 4, b, 3, cat, a, z" == linked_list.insert_after(3, 'cat')
+
+def test_insert_after_value_not_in_list(linked_list):
+    assert 'Value is not in the list' == linked_list.insert_after('e', 3)
+
+def test_insert_after_to_empty_list(linked_list):
+    assert 'Value is not in the list' == linked_list.insert_before('e', 3)
+
+# def test_append_2(linked_list):
+#     assert "d, 4, b, 3, cat, a, z, z2" == linked_list.append('z2')
+#     assert "d, 4, b, 3, cat, a, z, z2, e2" == linked_list.append('e2')
+
+def test_insert_before_node_in_the_middle(linked_list):
+    assert "d, 4, b, 3, 123, cat, a, z, z2, e2" == linked_list.insert_before('cat', 123)
+
+def test_insert_before_first_node(linked_list):
+    assert "new_first, d, 4, b, 3, 123, cat, a, z, z2, e2" == linked_list.insert_before('d', "new_first")
+
+
+def test_insert_after_the_middle(linked_list):
+    assert "new_first, d, 4, b, 3, 123, cat, dog, a, z, z2, e2" == linked_list.insert_after('cat', 'dog')
+
+def test_insert_after_the_last(linked_list):
+    assert "new_first, d, 4, b, 3, 123, cat, dog, a, z, z2, e2, 1000" == linked_list.insert_after('e2', '1000')
