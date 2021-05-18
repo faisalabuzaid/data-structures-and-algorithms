@@ -64,7 +64,7 @@ it take me two hours
 # Linked Lists
 <!-- Short summary or background information -->
 
-## Challenge
+## Code challenge 5
 Write a clsses and some methods to create linked list and to test them
 
 ## Approach & Efficiency
@@ -92,6 +92,7 @@ it take me three hours
 - the include method to check if a given value is included at the linked list
 - str method to return result as readable string
 
+<<<<<<< HEAD
 # Linked Lists II
 <!-- Short summary or background information -->
 
@@ -102,3 +103,26 @@ it take me three hours
  
 
 ## Solution
+=======
+## Code challenge 7
+
+function to get a node value with a given reverse index
+
+## Approach & Efficiency
+
+- get k as argument
+- set current to head
+- set count =0
+- check if current.next is truthy value
+- if it's assign current to the next
+- increase count by 1
+
+- check if k larger than count
+  if yes raise exception
+- for i in range (count -k)
+  set currnet into the next value
+
+## WhiteBoard 
+
+![](./python/assests/lab7.png)
+>>>>>>> master

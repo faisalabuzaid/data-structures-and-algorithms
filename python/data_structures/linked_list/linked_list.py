@@ -1,3 +1,4 @@
+
 class Node:
 
     def __init__(self, value=None, next=None):
@@ -40,45 +41,57 @@ class LinkedList():
 
 
 
-    def insertAfter(self, prev_node, new_data):
-        new_node = Node(new_data)
-        new_node.next = prev_node.next
-        prev_node.next = new_node
-
-    def insertBefore(self, next_node, value):
-        if (self.head == next_node):
-  
-            # Create a node
-            n = Node(value)
-    
-            # Point to next to current head
-            n.next = self.head
-    
-            # Update the head pointer
-            head = n
-      
-    # Otherwise traverse the list to
-    # find previous node of given node
+    def insert_after(self, value, new_data):
+        if self.include(value):
+            current = self.head
+            while current:
+                if current.value == value:
+                    node = Node(new_data)
+                    node.next = current.next
+                    current.next = node
+                    return self.__str__()
+                current = current.next
         else:
+            return 'Value is not in the list'
     
-            p = None
-            n = self.head
-    
-            # This loop will return p with
-            # previous pointer of given node
-            while(n != next_node):
-                p = n
-                n = n.next
-    
-            # Create a node
-            m = Node(value)
-    
-            # Update the m.next
-            m.next = p.next
-    
-            # Update previous node's next
-            p.next = m
+        
+    def insert_before(self, search_value, new_value):
+        if self.head == None:
+          return "The value is not exist"
 
+        new_node = Node(new_value)
+        current = self.head
+        if search_value == current.value:
+          self.head = new_node
+          self.head.next = current
+          return "The search value is not exist"
+        while current.next:
+          if current.next.value == search_value:
+            new_node.next = current.next
+            current.next = new_node
+            break
+          current = current.next
+
+    def kthFromEnd(self, k):
+        current = self.head
+        count = 0
+        
+        while current.next:
+            current = current.next
+            count += 1
+
+        if k > count:
+            return("Sorry, the value is larger than the linked list")
+
+        if k > count:
+            raise Exception("Sorry, the value is larger than the linked list")
+      
+
+        current = self.head
+        for i in range(count - k):
+            current = current.next
+        print(current.value)
+        return current.value
 
     def __str__(self):
         """ returns a string representing all the values in the Linked List, formatted as:
@@ -99,3 +112,24 @@ class LinkedList():
         # step 3 - return the final string
         return output
 
+test = LinkedList()
+test.insert(1)
+print(test)
+test.append(2)
+print(test)
+test.insert_after(1,10)
+print(test)
+test.insert_before(2, 4)
+print(test)
+
+def linked_list():
+    linked_list = LinkedList()
+    new_nodes = ['I', 'am', 'here', 'and', ['a', 'l', 'i', 7, 3]]
+    for node in new_nodes:
+        linked_list.insert(node)
+    return linked_list
+
+print(linked_list())
+test=linked_list()
+test.insert_before("and",3)
+print(test)
