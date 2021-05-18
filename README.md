@@ -113,3 +113,42 @@ function to get a node value with a given reverse index
 ## WhiteBoard 
 
 ![](./python/assests/lab7.png)
+
+
+# Code Challenge: Class 08
+## Code challenge 8
+
+a function called zip Lists which
+takes two linked lists as arguments.
+Zip the two linked lists together
+into one so that the nodes alternate
+between the two lists and return a 
+reference to the head of the zipped list.
+
+## Approach & Efficiency
+
+1. get two linked lists as parameters
+
+2. store the heads of each linked list as cuurent1, current2
+
+3. check the longest linked list and make it the prime one
+
+4. assign heads
+
+5. loop over the first one
+
+6. link first node to the current in the second list
+
+7. link the second current into the first next in the first linked list
+
+8. move the first current to the next of the first current
+
+9. move the second current to the next of the second current
+
+10. assign the head of the second to second current
+
+11. return the prime linked list
+
+## WhiteBoard 
+
+![](./python/assests/class8.png)
