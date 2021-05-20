@@ -152,3 +152,68 @@ reference to the head of the zipped list.
 ## WhiteBoard 
 
 ![](./python/assests/class8.png)
+
+
+# Stacks and Queues
+
+**Stacks** are based on the LIFO principle, i.e., the element inserted at the last, is the first element to come out of the list.
+
+**Queues** are based on the FIFO principle, i.e., the element inserted at the first, is the first element to come out of the list.
+
+
+## Challenge
+
+In this challenge I should write a combination of classes and methods which represent the stack and queues data structures and their terminologies, and then write tests to cover all the .
+
+## Approach & Efficiency
+
+### **Approach :**
+### Stack
+
+1. I create a simple class stack that only allows pop, push, and peek operations, and a method to check the embty stack.
+2. In push method I check if the stack isn't embty then I take the value from the argument and make new node and assign the new node
+  1. I assign the previuos head to the head.next
+  2. I assign the new node to the new head
+  3. if stack was embty I raise Exception
+3. In pop method
+  1. I check if stack is embty and raise exception if yes.
+  2. I create a new variable with name `prev` and assign the current top value to it.
+  3. I make the current top point to the node next to the current top (top.next)
+  4. I return the `prev`
+4. in peek method I just check if there is a top and return it's value, if there is no top, I raise Exception
+5. in isEmpty method I check if there is a top and return wether True or False depends on.
+
+### Queue
+
+1. I create a simple queue class  that only allows dequeue, enqueue, and peek operations, and a method to check the embty queue.
+2. In enqueue method I check if the queue isn't embty then I take the value from the argument and make new node and assign the new node
+  1. I assign the  new node to the rear.next
+  2. I assign the new node to the new rear
+  3. if queue was embty I raise Exception
+3. In dequeue method
+  1. I check if queue is embty and raise exception if yes.
+  2. I create a new variable with name `prev` and assign the current front value to it.
+  3. I make the current top point to the node next to the current top (top.next)
+  4. I return the `prev`
+4. in peek method I just check if there is a front and return it's value, if there is no top, I raise Exception
+5. in isEmpty method I check if there is a front and return wether True or False depends on.
+
+### **Efficiency :**
+
+Time and Space was O(1) for all the methods, except the push method for stack was O(N)
+
+
+
+## API
+
+**Stack**
+1. Push method: to add new node to the top of an previuos stack, or in embty stack.
+2. Pop method: to pop the node in the top and returns it's value, if there is a top.
+3. Peek: to print the value of the top node, witthout removing it, if there is a top.
+4. isEmbty: to check if a stack is empty.
+
+**Queue**
+1. Enqueue method: to add new node either in an empty queue or not.
+2. Dequeue method: to remove the node in the front and returns it's value, if there is a front.
+3. Peek: to print the value of the front node, witthout removing it, if there is a front.
+4. isEmbty: to check if a queue is empty.
