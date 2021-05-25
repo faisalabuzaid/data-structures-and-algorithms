@@ -217,3 +217,16 @@ Time and Space was O(1) for all the methods, except the push method for stack wa
 2. Dequeue method: to remove the node in the front and returns it's value, if there is a front.
 3. Peek: to print the value of the front node, witthout removing it, if there is a front.
 4. isEmbty: to check if a queue is empty.
+
+
+# First-in, First out Animal Shelter.
+Create a class called AnimalShelter which holds only dogs and cats.
+
+## Whiteboard Process
+not ready
+
+## Approach & Efficiency
+not ready
+
+## Solution
+not ready
