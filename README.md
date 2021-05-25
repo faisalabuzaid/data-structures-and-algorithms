@@ -230,3 +230,43 @@ not ready
 
 ## Solution
 not ready
+=======
+
+
+# Implement a Queue using two Stacks.
+Create a brand new PseudoQueue class. Do not use an existing Queue. Instead, this PseudoQueue class will implement our standard queue interface (the two methods listed below), but will internally only utilize 2 Stack objects. Ensure that you create your class with the following methods:
+
+- enqueue(value) 
+- dequeue() 
+
+
+## Whiteboard Process
+
+![](python/assests/code11.png)
+## Approach & Efficiency
+1. create two stacks instances objects
+  stack1 and stack2
+2. to enqueue we move all nodes in stack1
+   to stack2  two (pop from 1 push to 2)
+3. we push the new value to stack1
+4. then we bring back the values from 2 
+to 1 ( pop 2 and push to 1)
+5. to dequeue we return the top of stack 1
+
+Time O(N)
+Space O(1)
+
+## Solution
+```
+queue = PsuedoQueue()
+queue.enqueue(20)
+print(queue) # 20
+queue.enqueue(15)
+print(queue) # 15 20
+queue.enqueue(10)
+print(queue) # 10 15 20
+queue.enqueue(5)
+print(queue) # 5 10 15 20
+print(queue.dequeue()) # 20
+print(queue) # 5 10 15
+```
