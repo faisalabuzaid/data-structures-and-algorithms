@@ -219,6 +219,18 @@ Time and Space was O(1) for all the methods, except the push method for stack wa
 4. isEmbty: to check if a queue is empty.
 
 
+# First-in, First out Animal Shelter.
+Create a class called AnimalShelter which holds only dogs and cats.
+
+## Whiteboard Process
+not ready
+
+## Approach & Efficiency
+not ready
+
+## Solution
+not ready
+=======
 
 
 # Implement a Queue using two Stacks.
