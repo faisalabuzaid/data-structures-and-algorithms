@@ -219,17 +219,6 @@ Time and Space was O(1) for all the methods, except the push method for stack wa
 4. isEmbty: to check if a queue is empty.
 
 
-# First-in, First out Animal Shelter.
-Create a class called AnimalShelter which holds only dogs and cats.
-
-## Whiteboard Process
-not ready
-
-## Approach & Efficiency
-not ready
-
-## Solution
-not ready
 =======
 
 
@@ -270,3 +259,32 @@ print(queue) # 5 10 15 20
 print(queue.dequeue()) # 20
 print(queue) # 5 10 15
 ```
+# First-in, First out Animal Shelter.
+Create a class called AnimalShelter which holds only dogs and cats.
+
+## Whiteboard Process
+![](./python/assests/code12.jpg)
+
+=====
+
+# Multi-bracket Validation.
+
+write function that take a string as its only argument, and should return a Boolean representing whether or not the brackets in the string are balanced. {} [] ().
+
+## Whiteboard Process
+![](./python/assests/white_board.jpg)
+## Approach & Efficiency
+1. define a function take one argument which is string
+
+2.  use empty list. Each time, when an open parentheses is encountered push it in the list
+
+3. when closed parenthesis is encountered
+
+4. match it with the top of list and pop it.
+
+5. If list is empty at the end, return Balanced otherwise, Unbalanced.
+
+## Solution
+
+check balanced parentheses is to use embty list. Each time, when an open parentheses is encountered push it in the list, and when closed parenthesis is encountered, match it with the top of list and pop it. If list is empty at the end, return Balanced otherwise, Unbalanced.
+
