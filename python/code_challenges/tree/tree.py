@@ -8,104 +8,123 @@ class Binary_Tree:
     def __init__(self,root):
         self.root=Node(root)
 
-    def pre_order(self,current,v_list):
-        """
-         ROOT -> LEFT -> RIGHT.
-        """
-        try:
+
+    def pre_order(self):
+        result=[]
+        def walk(current):
+            """
+            ROOT -> LEFT -> RIGHT.
+            """
             if current:
-                v_list.append(str(current.value))
-                v_list = self.pre_order(current.left, v_list)
-                v_list = self.pre_order(current.right, v_list)
-            return v_list
-        except Exception as error:
-            print(f"There is error in pre-order:{error}")
+                result.append(str(current.value))
+            if current.left:    
+                walk(current.left)
+            if current.right:
+                walk(current.right)
+        walk(self.root)
+        return result
         
 
 
-    def in_order(self,current,v_list):
+    def in_order(self):
         """
          LEFT-> ROOT -> RIGHT.
         """
-        try:
+        result=[]
+        def walk(current):
             if current:
-                v_list = self.in_order(current.left,v_list)
-                v_list.append(str(current.value))
-                v_list = self.in_order(current.right,v_list)
-            return v_list
-        except Exception as error:
-            print(f"There is error in in_order:{error}")
+                if current.left:
+                    walk(current.left)
+                result.append(str(current.value))
+                if current.right:
+                    walk(current.right)
+        walk(self.root)
+        return result
 
-    def post_order(self,current,v_list):
+    def post_order(self):
         """
           LEFT -->> RIGHT -->> ROOT.
         """
-        try:
+        result=[]
+        def walk(current):
             if current:
-                v_list = self.post_order(current.left,v_list)
-                v_list = self.post_order(current.right,v_list)
-                v_list.append(str(current.value))
-            return v_list
-        except Exception as error:
-            print(f"There is error in post_order:{error}")
+                if current.left:
+                    walk(current.left)
+                if current.right:
+                    walk(current.right)
+                result.append(str(current.value))
+        walk(self.root)
+        return result
+
+
+class Binary_Search_Tree:
+    def __init__(self,root):
+        self.root=Node(root)
 
     def add(self,value):
-        try:
-            if not self.root:
-                self.root=Node(value)
-            else:
-                new_node=Node(value)
-                if new_node>=self.root:
-                    self.root.right=new_node
-                    return self.root.right
-                elif new_node<self.root:
-                    self.root.left=new_node
-                    return self.root.left
-        except Exception as error:
-            print(f"There is error in add:{error}")
+        if not self.root:
+            self.root=Node(value)
+        else:
+            def addt(current):
+                if current.value >= value:
+                    if current.left:
+                        addt(current.left)
+                    else:
+                        current.left = Node(value)
+                elif current.value < value:
+                    if current.right:
+                        addt(current.right)
+                    else:
+                        current.right = Node(value)
+            addt(self.root)
 
     def contain(self,value):
-        current = self.root
-        def contains(current=current,value=value):
-            try:
-                if current:
-                    if current.value == value:
-                        return True
-                    elif current.value > value:
-                        current = current.left
-                        contains(current,value)
-                    elif current.value < value:
-                        current = current.right
-                        contains(current,value)
-                else:
-                    return False 
-            except Exception as error:
-                print(f"There is error in call_tv :{error}")
+        self.flag = False
 
-    def call_tv (self,type_depth):
-        try:
-            if type_depth == "pre_order":
-                return self.pre_order(self.root,[])
-            elif type_depth == "in_order":
-                return self.in_order(self.root,[])
-            elif type_depth == "post_order":
-                return self.post_order(self.root,[])
+        def contains(current):
+            if current:
+                if current.value == value:
+                    self.flag = True
+ 
+                if current.value < value:
+                    if current.right:
+                        contains(current.right)
+                    else:
+                        self.flag = False
+
+                if current.value > value:   
+                    if current.left:
+                        contains(current.left)
+                    else:
+                        self.flag = False
             else:
-                print("Wrong type depth")
-                return False 
-        except Exception as error:
-            print(f"There is error in call_tv :{error}")
+                self.flag = False
+         
+        contains(self.root)
+        return self.flag
+
+    
+
     
 if __name__ == "__main__":
-    tree = Binary_Tree(10)
-    tree.root.left = Node(9)
-    tree.root.left.left = Node(7)
-    tree.root.left.right = Node(8)
-    tree.root.right = Node(16)
-    tree.root.right.left= Node(11)
-    tree.root.right.right = Node(17)
+    # tree = Binary_Tree(10)
+    # tree.root.left = Node(9)
+    # tree.root.left.left = Node(7)
+    # tree.root.left.right = Node(8)
+    # tree.root.right = Node(16)
+    # tree.root.right.left= Node(11)
+    # tree.root.right.right = Node(17)
 
-    print("pre_order",tree.call_tv("pre_order"))
-    print("in_order",tree.call_tv("in_order"))
-    print("post_order",tree.call_tv("post_order"))
-    print("contains 10?", tree.contain(10))
+    # print("pre_order",tree.call_tv("pre_order"))
+    # print("in_order",tree.call_tv("in_order"))
+    # print("post_order",tree.call_tv("post_order"))
+    # print("contains 10?", tree.contain(10))
+    # test = Binary_Search_Tree(20)
+    # test.add(10)
+    # test.add(30)
+    # test.add(40)
+    # test.add(25)
+    # test.add(12)
+    # print(test.pre_order())
+    # print(test.contain(60))
+    
