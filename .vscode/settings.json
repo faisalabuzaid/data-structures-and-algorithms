@@ -1,3 +1,4 @@
 {
-    "liveServer.settings.port": 5501
+    "liveServer.settings.port": 5501,
+    "python.pythonPath": "/home/faisal/.pyenv/versions/3.8.5/bin/python"
 }

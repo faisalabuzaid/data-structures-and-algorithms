@@ -60,9 +60,12 @@ class Queue():
             self.rear = node
 
     def dequeue(self):
+        print('start')
         if self.front:
+            print('in if')
             prev = self.front
-            self.front = self.front.next
+            self.front = prev.next
+            self.rear = None
             return prev.value
         raise EmptyQueueException("You can't dequeue from empty Queue")
 
@@ -88,5 +91,11 @@ class Queue():
 
 
 
+
 if __name__ == "__main__":
-    pass
+    test = Queue()
+    test.enqueue('hi')
+
+    print(test)
+    test.dequeue()
+    print(test.rear.value)

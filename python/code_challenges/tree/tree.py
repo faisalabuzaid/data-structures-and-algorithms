@@ -59,75 +59,75 @@ class Binary_Tree:
         walk(self.root)
         return result
 
+
+class Binary_Search_Tree:
+    def __init__(self,root):
+        self.root=Node(root)
+
     def add(self,value):
         if not self.root:
-            self.root = Node(value)
+            self.root=Node(value)
         else:
-            # current=self.root
             def addt(current):
-
-                if value >= current.value:
-                    if current.right:
-                        addt(current.right)
-                    else:
-                        current.right = Node(value)
-
-                    
-                elif value < current.value:
+                if current.value >= value:
                     if current.left:
                         addt(current.left)
                     else:
                         current.left = Node(value)
-
+                elif current.value < value:
+                    if current.right:
+                        addt(current.right)
+                    else:
+                        current.right = Node(value)
             addt(self.root)
 
     def contain(self,value):
+        self.flag = False
+
         def contains(current):
             if current:
-                print(current.value)
                 if current.value == value:
-                    print('True')
-                    return True
-                elif current.value < value:
+                    self.flag = True
+ 
+                if current.value < value:
                     if current.right:
                         contains(current.right)
                     else:
-                        return False
+                        self.flag = False
 
-                elif current.value > value:
+                if current.value > value:   
                     if current.left:
                         contains(current.left)
                     else:
-                        return False
-        
-        test = contains(self.root)
-        print(test)
-        return test
+                        self.flag = False
+            else:
+                self.flag = False
+         
+        contains(self.root)
+        return self.flag
+
+    
 
     
 if __name__ == "__main__":
-    # tree = Binary_Tree(1)
-    # tree.root.left = Node(2)
-    # tree.root.right = Node(3)
-    # tree.root.right.left= Node(4)
-    # tree.root.right.right = Node(5)
+    # tree = Binary_Tree(10)
+    # tree.root.left = Node(9)
+    # tree.root.left.left = Node(7)
+    # tree.root.left.right = Node(8)
+    # tree.root.right = Node(16)
+    # tree.root.right.left= Node(11)
+    # tree.root.right.right = Node(17)
 
-    bst = Binary_Tree(20)
-    bst.add(10)
-    print(bst.root.left)
-    # bst.add(30)
-    # bst.add(5)
-    # bst.add(40)
-    # bst.add(50)
-    # print(bst.root.left.value)
-    print("pre_order",bst.pre_order())
-
-    # print(bst.root.right.value)
-    print("contains 10?", bst.contain(10))
-
-    # print('bst', bst.right.value)
-
-    # print("pre_order",tree.pre_order())
-    # print("in_order",tree.in_order())
-    # print("post_order",tree.post_order())
-    # print("contains 10?", tree.contain(0))
+    # print("pre_order",tree.call_tv("pre_order"))
+    # print("in_order",tree.call_tv("in_order"))
+    # print("post_order",tree.call_tv("post_order"))
+    # print("contains 10?", tree.contain(10))
+    # test = Binary_Search_Tree(20)
+    # test.add(10)
+    # test.add(30)
+    # test.add(40)
+    # test.add(25)
+    # test.add(12)
+    # print(test.pre_order())
+    # print(test.contain(60))
+    
