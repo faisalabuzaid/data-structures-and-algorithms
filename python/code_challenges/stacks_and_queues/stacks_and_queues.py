@@ -1,9 +1,5 @@
 class EmptyStackException(Exception):
   pass
-
-class EmptyQueueException(Exception):
-  pass
-
 class Node():
     def __init__(self, value=None):
         self.value = value
