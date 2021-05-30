@@ -288,3 +288,42 @@ write function that take a string as its only argument, and should return a Bool
 
 check balanced parentheses is to use embty list. Each time, when an open parentheses is encountered push it in the list, and when closed parenthesis is encountered, match it with the top of list and pop it. If list is empty at the end, return Balanced otherwise, Unbalanced.
 
+
+# Trees
+<!-- Short summary or background information -->
+
+## Challenge
+
+Create a Node class
+
+and a BinaryTree class
+
+Define a method for each of the depth first traversals called preOrder, inOrder, and postOrder which returns an array of the values, ordered appropriately.
+
+raise exceptions or errors when needed.
+
+Create a BinarySearchTree class
+
+and Define a method named add that accepts a value, and adds a new node with that value in the correct location in the binary search tree.
+
+Define a method named contains that accepts a value, and returns a boolean indicating whether or not the value is in the tree at least once.
+
+
+
+
+## Approach & Efficiency
+1. Create a Node class with self.right and left
+2. Create a BinaryTree class, takes one argument root and create a node of it
+3. Define a method for preOrder
+4. Define a method for inOrder
+5. Define a method for post-order.
+6. Define a method for add in tree search
+7. Define a method for add in tree search
+8. Define a method named contains for check if element is in tree
+
+## API
+pre-order: depth traversals root left right
+in-order: depth traversals root left right
+post-order: depth traversals root left right
+add: add a new node to binary search tree depend on its value
+contain: search for a value if it's included in a search binary tree
