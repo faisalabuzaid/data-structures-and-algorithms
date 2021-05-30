@@ -1,3 +1,6 @@
+from typing import Counter
+
+
 class Node:
     def __init__(self,value):
         self.value=value
@@ -61,6 +64,53 @@ class Binary_Search_Tree:
     def __init__(self,root):
         self.root=Node(root)
 
+    def pre_order(self):
+        result=[]
+        def walk(current):
+            """
+            ROOT -> LEFT -> RIGHT.
+            """
+            if current:
+                result.append(str(current.value))
+            if current.left:    
+                walk(current.left)
+            if current.right:
+                walk(current.right)
+        walk(self.root)
+        return result
+        
+
+
+    def in_order(self):
+        """
+         LEFT-> ROOT -> RIGHT.
+        """
+        result=[]
+        def walk(current):
+            if current:
+                if current.left:
+                    walk(current.left)
+                result.append(str(current.value))
+                if current.right:
+                    walk(current.right)
+        walk(self.root)
+        return result
+
+    def post_order(self):
+        """
+          LEFT -->> RIGHT -->> ROOT.
+        """
+        result=[]
+        def walk(current):
+            if current:
+                if current.left:
+                    walk(current.left)
+                if current.right:
+                    walk(current.right)
+                result.append(str(current.value))
+        walk(self.root)
+        return result
+
     def add(self,value):
         if not self.root:
             self.root=Node(value)
@@ -107,6 +157,7 @@ class Binary_Search_Tree:
 
     
 if __name__ == "__main__":
+    
     # tree = Binary_Tree(10)
     # tree.root.left = Node(9)
     # tree.root.left.left = Node(7)
@@ -119,12 +170,11 @@ if __name__ == "__main__":
     # print("in_order",tree.call_tv("in_order"))
     # print("post_order",tree.call_tv("post_order"))
     # print("contains 10?", tree.contain(10))
-    # test = Binary_Search_Tree(20)
-    # test.add(10)
-    # test.add(30)
-    # test.add(40)
-    # test.add(25)
-    # test.add(12)
-    # print(test.pre_order())
+    test = Binary_Search_Tree(20)
+    test.add(10)
+    test.add(30)
+    test.add(40)
+    test.add(25)
+    test.add(12)
+    print(test.pre_order())
     # print(test.contain(60))
-    
