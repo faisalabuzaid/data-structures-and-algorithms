@@ -65,3 +65,17 @@ def test_contain():
     assert actual_1 == expected_1
     assert actual_2 == expected_2
     assert actual_3 == expected_3
+
+def test_find_max():
+    tree = Binary_Tree(10)
+    tree.root.left = Node(90)
+    tree.root.left.left = Node(27)
+    tree.root.left.right = Node(8)
+    tree.root.right = Node(16)
+    tree.root.right.left= Node(11)
+    tree.root.right.right = Node(87)
+    actual = tree.find_max()
+    false_expected = 87
+    expected = 90
+    assert actual == expected
+    assert actual != false_expected

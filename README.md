@@ -327,3 +327,47 @@ in-order: depth traversals root left right
 post-order: depth traversals root left right
 add: add a new node to binary search tree depend on its value
 contain: search for a value if it's included in a search binary tree
+
+# Find Max
+Find the Maximum Value in a Binary Tree
+
+
+## Whiteboard Process
+![](./python/assests/code16.jpg)
+
+## Approach & Efficiency
+
+Create a method named find_max, take one arg
+assign root value to it and then start comparing with right and left until reach max
+return the max
+
+
+## Solution
+
+def find_max(self):
+
+        self.value=0
+
+        def walk(current):
+
+            if current:
+
+                if current.value > self.value:
+
+                    self.value = current.value
+
+                if current.right:
+
+                        walk(current.right)
+
+                if current.left:
+
+                        walk(current.left)
+
+            else:
+
+                return
+
+        walk(self.root)
+
+        return self.value

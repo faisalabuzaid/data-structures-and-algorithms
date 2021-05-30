@@ -59,6 +59,23 @@ class Binary_Tree:
         walk(self.root)
         return result
 
+    def find_max(self):
+        self.value=0
+        def walk(current):
+            if current:
+                if current.value > self.value:
+                    self.value = current.value
+                if current.right:
+                        walk(current.right)
+                if current.left:
+                        walk(current.left)
+            else:
+                return
+        walk(self.root)
+        return self.value
+
+
+
 
 class Binary_Search_Tree:
     def __init__(self,root):
@@ -158,23 +175,25 @@ class Binary_Search_Tree:
     
 if __name__ == "__main__":
     
-    # tree = Binary_Tree(10)
-    # tree.root.left = Node(9)
-    # tree.root.left.left = Node(7)
-    # tree.root.left.right = Node(8)
-    # tree.root.right = Node(16)
-    # tree.root.right.left= Node(11)
-    # tree.root.right.right = Node(17)
+    tree = Binary_Tree(10)
+    tree.root.left = Node(90)
+    tree.root.left.left = Node(27)
+    tree.root.left.right = Node(8)
+    tree.root.right = Node(16)
+    tree.root.right.left= Node(11)
+    tree.root.right.right = Node(97)
+    print(tree.find_max())
+    print(tree.pre_order())
 
     # print("pre_order",tree.call_tv("pre_order"))
     # print("in_order",tree.call_tv("in_order"))
     # print("post_order",tree.call_tv("post_order"))
-    # print("contains 10?", tree.contain(10))
-    test = Binary_Search_Tree(20)
-    test.add(10)
-    test.add(30)
-    test.add(40)
-    test.add(25)
-    test.add(12)
-    print(test.pre_order())
+    # # print("contains 10?", tree.contain(10))
+    # test = Binary_Search_Tree(20)
+    # test.add(10)
+    # test.add(30)
+    # test.add(40)
+    # test.add(25)
+    # test.add(12)
+    # print(test.pre_order())
     # print(test.contain(60))
