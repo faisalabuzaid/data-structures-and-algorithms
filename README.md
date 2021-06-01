@@ -371,3 +371,24 @@ def find_max(self):
         walk(self.root)
 
         return self.value
+
+
+# Fizz Buzz
+Conduct “FizzBuzz” on a k-ary tree while traversing through it to create a new tree.
+Set the values of each of the new nodes depending on the corresponding node value in the source tree.
+
+## Whiteboard Process
+![](./python/assests/fizzbuzz.jpg)
+
+
+## Approach & Efficiency
+- loop throght all nodes in the binary tree
+
+- check if:
+1. node capable to division by 3, replace the value with Fizz
+2. node capable to division by 5, replace the value with Buzz
+3. node capable to division by 3 and 5, replace the value with FizzBuzz
+4. node not capable to division by 3 or 5 , return the value
+
+## Solution
+loop throght all nodes in the binary tree to check if : 1- node capable to division by 3, replace the value with Fizz 2- node capable to division by 5, replace the value with Buzz 3- node capable to division by 3 and 5, replace the value with FizzBuzz 4- node not capable to division by 3 or 5 , return the value
