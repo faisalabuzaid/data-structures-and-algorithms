@@ -127,14 +127,16 @@ class Binary_Tree:
         Return: a list begin from the root, end up with the last right child in the last level.
         """
         thislevel = [rootnode]
+        result =[]
         while thislevel:
             nextlevel = list()
             for n in thislevel:
-                print (n.value)
+                result.append(n.value)
                 if n.left: nextlevel.append(n.left)
                 if n.right: nextlevel.append(n.right)
             print
             thislevel = nextlevel
+        return result
 
 class Binary_Search_Tree:
     def __init__(self,root):
@@ -244,15 +246,3 @@ if __name__ == "__main__":
     print(tree.find_max())
     print(tree.pre_order())
     print(tree.breadth_first_traversal(tree.root))
-    # print("pre_order",tree.call_tv("pre_order"))
-    # print("in_order",tree.call_tv("in_order"))
-    # print("post_order",tree.call_tv("post_order"))
-    # # print("contains 10?", tree.contain(10))
-    # test = Binary_Search_Tree(20)
-    # test.add(10)
-    # test.add(30)
-    # test.add(40)
-    # test.add(25)
-    # test.add(12)
-    # print(test.pre_order())
-    # print(test.contain(60))
