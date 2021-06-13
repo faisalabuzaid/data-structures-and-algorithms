@@ -372,6 +372,49 @@ def find_max(self):
 
         return self.value
 
+# Breadth First
+Find the Maximum Value in a Binary Tree
+
+
+## Whiteboard Process
+![](./python/assests/depth.jpg)
+
+## Approach & Efficiency
+
+- create a mthod named breadth_first_traversal
+- assigm a list with the root node to a varable called thislevel
+- create a result variable list to append the results to it
+- loop while thislevel is not embty
+- create an empty list named next level to assign the next level nodes to it
+- loop in thislevel, n times
+- append the n value to result list and check if there are left and right and append them to nextlevel list
+- assign the nextlevel to thislevel
+- return result after finish while loop
+
+## Solution
+def  breadth_first_traversal(self,rootnode):
+
+        thislevel = [rootnode]
+
+        result =[]
+
+        while thislevel:
+
+            nextlevel = list()
+
+            for n in thislevel:
+
+                result.append(n.value)
+
+                if n.left: nextlevel.append(n.left)
+
+                if n.right: nextlevel.append(n.right)
+
+            print
+
+            thislevel = nextlevel
+
+        return result
 
 # Fizz Buzz
 Conduct “FizzBuzz” on a k-ary tree while traversing through it to create a new tree.

@@ -79,3 +79,15 @@ def test_find_max():
     expected = 90
     assert actual == expected
     assert actual != false_expected
+
+def test_breadth_first():
+    tree = Binary_Tree(10)
+    tree.root.left = TNode(90)
+    tree.root.left.left = TNode(27)
+    tree.root.left.right = TNode(8)
+    tree.root.right = TNode(16)
+    tree.root.right.left= TNode(11)
+    tree.root.right.right = TNode(97)
+    actual = tree.breadth_first_traversal(tree.root)
+    expected = [10, 90, 16, 27, 8, 11, 97]
+    assert actual == expected
