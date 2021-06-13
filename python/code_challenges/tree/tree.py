@@ -1,4 +1,8 @@
-from typing import Counter
+class Node():
+    def __init__(self, value=None):
+        self.value = value
+        self.next = None
+
 
 class Node():
     def __init__(self, value=None):
@@ -246,3 +250,4 @@ if __name__ == "__main__":
     print(tree.find_max())
     print(tree.pre_order())
     print(tree.breadth_first_traversal(tree.root))
+
