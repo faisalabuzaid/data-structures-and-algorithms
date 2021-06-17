@@ -48,7 +48,7 @@ class HashMap:
                     return True
 
     def get(self,key):
-        key_hash = self.hash(key) 
+        key_hash = self._hash(key) 
         if self.map[key_hash] is not None:
             for pair in self.map[key_hash]: 
                 if pair[0] == key:
