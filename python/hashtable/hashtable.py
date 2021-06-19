@@ -18,47 +18,68 @@ class LinkedList:
                 current = current.next
             current.next = node
 
+    def __str__(self) -> str:
+        result = ""
+        current = self.head
+        while current:
+            result += str(current.value)
+        return f"{result} > None"
+
 class HashMap:
     def __init__(self, size=1024):
         self.size=size
-        self.map = self.size * [None]
-
+        self.bucket = self.size * [None]
     
     def _hash(self, key):
-        hashed_total = 0
+        sum = 0
         for char in key:
-            hashed_total += ord(char)
-        return hashed_total*19 % self.size
+            sum += ord(char)
+        return sum*19 % self.size
 
 
     def add(self,key,value):
-        key_hash = self._hash(key)
-        key_value = [key, value]
 
-        if self.map[key_hash] is None:
-            self.map[key_hash] = list([key_value])
-            return True
-        else:
-            for pair in self.map[key_hash]:
-                if pair[0] == key:
-                    pair[1] = value
-                    return True
-                else:
-                    self.map[key_hash].append(list([key_value]))
-                    return True
+        index = self._hash(key)
+
+        if not self.bucket[index]:
+            self.bucket[index] = LinkedList()
+          
+        current = self.bucket[index].head
+        while current:
+            if current.value[0] == key:
+                current.value[1] = value
+                return
+            current = current.next
+        self.bucket[index].add([key, value])
+
 
     def get(self,key):
-        key_hash = self._hash(key) 
-        if self.map[key_hash] is not None:
-            for pair in self.map[key_hash]: 
-                if pair[0] == key:
-                    return pair[1]
+        index = self._hash(key) 
+        if self.bucket[index]:
+            current = self.bucket[index].head
+            while current:
+                if current.value[0] == key:
+                    return current.value[1]
+                current = current.next
+        # raise KeyError('Key is not found')
+        return 'Null'
 
+    def contains(self,key):
+        index = self._hash(key)
+        if self.bucket[index]:
+            current = self.bucket[index].head
+            while current:
+                if current.value[0] == key:
+                    return True
+        return False
 
-    def set(self,key,value):
-        hashed_key = self.hash(key)
-        if self.map[hashed_key] == None:
-            self.map[hashed_key] = LinkedList()
-        self.map[hashed_key].add((key, value))
+# test = HashMap()
+# test.add('ab', 'faisal')
+# test.add('ba', 'ahmad')
 
-    
+# print(test._hash('ab'))
+# print(test._hash('ba'))
+
+# print(test.get('ab'))
+# print(test.get('ba'))
+
