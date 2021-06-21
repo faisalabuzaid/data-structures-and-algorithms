@@ -1,3 +1,4 @@
+
 class Node:
     def __init__(self,value):
         self.value=value
@@ -73,13 +74,16 @@ class HashMap:
                     return True
         return False
 
-# test = HashMap()
-# test.add('ab', 'faisal')
-# test.add('ba', 'ahmad')
+      
+if __name__ == "__main__":
 
-# print(test._hash('ab'))
-# print(test._hash('ba'))
+    test = HashMap()
+    test.add('ab', 'faisal')
+    test.add('ba', 'ahmad')
 
-# print(test.get('ab'))
-# print(test.get('ba'))
+    print(test._hash('ab'))
+    print(test._hash('ba'))
+
+    print(test.get('ab'))
+    print(test.get('ba'))
 

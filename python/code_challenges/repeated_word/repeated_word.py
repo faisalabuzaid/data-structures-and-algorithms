@@ -1,16 +1,17 @@
+from hashtable.hashtable import HashMap
 import re
   
 def repeat(input): 
+    
     words = re.findall('[\w]+', input.lower())
-    repeat=[]
+    table = HashMap()
 
     for word in words:
 
-        if word in repeat: 
-            print (word) 
+        if table.contains(word): 
             return word
         else:
-            repeat.append(word)
+            table.add(word, 0)
 
     return None
       
