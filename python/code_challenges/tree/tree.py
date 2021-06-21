@@ -1,253 +1,205 @@
-class Node():
-    def __init__(self, value=None):
-        self.value = value
-        self.next = None
+class Queue:
+    def __init__(self):
+        self.front = None
 
+    def enqueue(self, data):
+        node = Node(data)
 
-class Node():
-    def __init__(self, value=None):
-        self.value = value
-        self.next = None
-
-class TNode:
-    def __init__(self,value):
-        self.value=value
-        self.right=None
-        self.left=None
-
-
-
-class Queue():
-    def __init__(self, front=None, rear=None):
-        self.front = front
-        self.rear = rear
-
-    def enqueue(self, value):
-        node  = Node(value)
-        if not self.rear:
+        if not self.front:
             self.front = node
-            self.rear = node
         else:
-            self.rear.next = node
-            self.rear = node
+            current = self.front
+            while current.next:
+                current = current.next
+            current.next = node
+            node.next = None
 
     def dequeue(self):
-        if self.front:
-            previous = self.front
+        if not self.isEmpty():
+            temp = self.front
             self.front = self.front.next
-            return previous.value
-        raise Exception("You can't dequeue from empty Queue")
-
-    def peek(self):
-        if self.front:
-            return self.front.value
-        raise Exception("Empty Queue")
-
+            temp.next = None
+            return temp.data
+        return "empty"
 
     def isEmpty(self):
-        if not self.front:
-            return True
+        if self.front:
+            return False
+        return True
+
+class Node:
+    def __init__(self, data = None):
+        self.data = data
+        self.left = None
+        self.right = None
+        self.next = None
+
+class BinaryTree:
+    def __init__(self, root = None):
+        self.root = Node(root)
+
+    def preOrder(self):
+        tree = []
+
+        if self.root:
+
+            def walk(node):
+
+                tree.append(node.data)
+
+                if node.left:
+                    walk(node.left)
+
+                if node.right:
+                    walk(node.right)
+
+            walk(self.root)
+            return tree
+
+        else:
+            return "tree is empty"
+
+    def inOrder(self):
+        tree = []
+
+        if self.root:
+
+            def walk(node):
+
+                if node.left:
+                    walk(node.left)
+
+                tree.append(node.data)
+
+                if node.right:
+                    walk(node.right)
+
+            walk(self.root)
+            return tree
+
+        else:
+            return "tree is empty"
+
+    def postOrder(self):
+        tree = []
+
+        if self.root:
+
+            def walk(node):
+
+                if node.left:
+                    walk(node.left)
+
+                if node.right:
+                    walk(node.right)
+
+                tree.append(node.data)
+
+            walk(self.root)
+            return tree
+
+        else:
+            return "tree is empty"
+
+    def find_maximum_value(self):
+       
+        maximum_value = self.root.data
+
+        def walk(root):
+
+            nonlocal maximum_value
+
+            if root.data > maximum_value:
+                maximum_value = root.data
+
+            if root.left:
+                walk(root.left)
+
+            if root.right:
+                walk(root.right)
+
+            return maximum_value
+
+        return walk(self.root)
+
+    def breadth_first(self):
+        q = Queue()
+
+        q.enqueue(self.root)
+
+        result = []
+
+        temp = None
+
+        while not q.isEmpty():
+
+            temp = q.dequeue()
+
+            result.append(temp.data)
+
+            if temp.left:
+                q.enqueue(temp.left)
+
+            if temp.right:
+                q.enqueue(temp.right)
+
+        return result
+
+class BinarySearchTree(BinaryTree):
+
+    def add(self, data):
+
+        if not self.root:
+            self.root = Node(data)
+
+        else:
+            def walk(root):
+                if data < root.data:
+                    if not root.left:
+                        root.left = Node(data)
+                        return
+                    else:
+                        walk(root.left)
+                else:
+                    if not root.right:
+                        root.right = Node(data)
+                        return
+                    else:
+                        walk(root.right)
+
+            return walk(self.root)
+
+    def contains(self, data):
+        
+        while self.root:
+
+            if self.root.data == data:
+                return True
+
+            elif self.root.data > data:
+                if self.root.left:
+                    self.root = self.root.left
+                else: 
+                    return False
+
+            else:
+                if self.root.right:
+                    self.root = self.root.right
+                else: 
+                    return False
+
         return False
 
-    def __str__(self):
-        current = self.front
-        items = []
-        while current:
-            items.append(str(current.value))
-            current = current.next
-        return "\n".join(items)
-
-class Binary_Tree:
-    def __init__(self,root):
-        self.root=TNode(root)
-
-
-    def pre_order(self):
-        result=[]
-        def walk(current):
-            """
-            ROOT -> LEFT -> RIGHT.
-            """
-            if current:
-                result.append(str(current.value))
-            if current.left:    
-                walk(current.left)
-            if current.right:
-                walk(current.right)
-        walk(self.root)
-        return result
-        
-
-
-    def in_order(self):
-        """
-         LEFT-> ROOT -> RIGHT.
-        """
-        result=[]
-        def walk(current):
-            if current:
-                if current.left:
-                    walk(current.left)
-                result.append(str(current.value))
-                if current.right:
-                    walk(current.right)
-        walk(self.root)
-        return result
-
-    def post_order(self):
-        """
-          LEFT -->> RIGHT -->> ROOT.
-        """
-        result=[]
-        def walk(current):
-            if current:
-                if current.left:
-                    walk(current.left)
-                if current.right:
-                    walk(current.right)
-                result.append(str(current.value))
-        walk(self.root)
-        return result
-
-    def find_max(self):
-        self.value=0
-        def walk(current):
-            if current:
-                if current.value > self.value:
-                    self.value = current.value
-                if current.right:
-                        walk(current.right)
-                if current.left:
-                        walk(current.left)
-            else:
-                return
-        walk(self.root)
-        return self.value
-
-    def  breadth_first_traversal(self,rootnode):
-        """
-        This is breadth_first_traversal method to travesal in the binary tree through
-        breadth (level by level).
-        Return: a list begin from the root, end up with the last right child in the last level.
-        """
-        thislevel = [rootnode]
-        result =[]
-        while thislevel:
-            nextlevel = list()
-            for n in thislevel:
-                result.append(n.value)
-                if n.left: nextlevel.append(n.left)
-                if n.right: nextlevel.append(n.right)
-            print
-            thislevel = nextlevel
-        return result
-
-class Binary_Search_Tree:
-    def __init__(self,root):
-        self.root=TNode(root)
-
-    def pre_order(self):
-        result=[]
-        def walk(current):
-            """
-            ROOT -> LEFT -> RIGHT.
-            """
-            if current:
-                result.append(str(current.value))
-            if current.left:    
-                walk(current.left)
-            if current.right:
-                walk(current.right)
-        walk(self.root)
-        return result
-        
-
-
-    def in_order(self):
-        """
-         LEFT-> ROOT -> RIGHT.
-        """
-        result=[]
-        def walk(current):
-            if current:
-                if current.left:
-                    walk(current.left)
-                result.append(str(current.value))
-                if current.right:
-                    walk(current.right)
-        walk(self.root)
-        return result
-
-    def post_order(self):
-        """
-          LEFT -->> RIGHT -->> ROOT.
-        """
-        result=[]
-        def walk(current):
-            if current:
-                if current.left:
-                    walk(current.left)
-                if current.right:
-                    walk(current.right)
-                result.append(str(current.value))
-        walk(self.root)
-        return result
-
-    def add(self,value):
-        if not self.root:
-            self.root=TNode(value)
-        else:
-            def addt(current):
-                if current.value >= value:
-                    if current.left:
-                        addt(current.left)
-                    else:
-                        current.left = TNode(value)
-                elif current.value < value:
-                    if current.right:
-                        addt(current.right)
-                    else:
-                        current.right = TNode(value)
-            addt(self.root)
-
-    def contain(self,value):
-        self.flag = False
-
-        def contains(current):
-            if current:
-                if current.value == value:
-                    self.flag = True
- 
-                if current.value < value:
-                    if current.right:
-                        contains(current.right)
-                    else:
-                        self.flag = False
-
-                if current.value > value:   
-                    if current.left:
-                        contains(current.left)
-                    else:
-                        self.flag = False
-            else:
-                self.flag = False
-         
-        contains(self.root)
-        return self.flag
-
-    
-
-    
 if __name__ == "__main__":
     
-    tree = Binary_Tree(10)
-    tree.root.left = TNode(90)
-    tree.root.left.left = TNode(27)
-    tree.root.left.right = TNode(8)
-    tree.root.right = TNode(16)
-    tree.root.right.left= TNode(11)
-    tree.root.right.right = TNode(97)
-    print(tree.find_max())
-    print(tree.pre_order())
-    print(tree.breadth_first_traversal(tree.root))
+    tree = BinaryTree(10)
+    tree.root.left = Node(90)
+    tree.root.left.left = Node(27)
+    tree.root.left.right = Node(8)
+    tree.root.right = Node(16)
+    tree.root.right.left= Node(11)
+    tree.root.right.right = Node(97)
+    print(tree.find_maximum_value())
+    print(tree.inOrder())
+    print(tree.breadth_first())
 
