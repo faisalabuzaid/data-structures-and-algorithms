@@ -1,4 +1,4 @@
-from hashtable.hashtable import HashMap,Node,LinkedList
+from code_challenges.hashtable.hashtable import HashMap,Node,LinkedList
 
 def test_hashtable_hash():
     hm = HashMap()
