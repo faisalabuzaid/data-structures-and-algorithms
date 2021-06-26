@@ -1,5 +1,3 @@
-import re
-
 class Node:
     def __init__(self, value):
         self.value = value
@@ -20,12 +18,17 @@ class LinkedList:
             while current.next:
                 current = current.next
             current.next = node
+    def __iter__(self):
+        current = self.head
+        while current:
+            yield current.value
+            current = current.next
 
     def __str__(self) -> str:
         result = ""
         current = self.head
         while current:
-            result += f"{str(current.value)} "
+            result += f"{current.value} "
             current = current.next
         return result
 
@@ -55,7 +58,7 @@ class HashMap:
                 return
             current = current.next
         self.bucket[index].add([key, value])
-        return
+    
 
     def get(self, key):
         index = self._hash(key)
@@ -81,7 +84,8 @@ class HashMap:
     def __iter__(self):
         for items in self.bucket:
             if items:
-                yield items
+                for value in items:
+                    yield value
 
     def __str__(self) -> str:
         result = ''
@@ -90,22 +94,27 @@ class HashMap:
         return result
 
 
-def repeat(input):    
-    words = re.findall("[\w]+", input.lower())
-    table = HashMap()
-    for word in words:
-        if table.contains(word):
-            y = table.get(word) + 1
-            table.add(word, y)
+def most_common(paragraph):
+
+
+    words_list = paragraph.split()
+    mytable = HashMap()
+    for word in words_list:
+
+        if mytable.contains(word):
+            mytable.add(word, mytable.get(word)+1)
         else:
-            table.add(word, 0)
-    return table
+            mytable.add(word,1)
+
+    initial = 0
+    for item in mytable:
+        if item[1] > initial:
+            initial = item[1]
+            word = item[0]
+    return word 
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
+  test = 'in a galaxy far far away'
+  print(most_common(test))
 
-    input = "Once upon a time, there was a brave princess who..."    
-
-    input3 = "It was a queer, sultry summer, the summer they electrocuted the Rosenbergs, and I didn’t know what I was doing in New York..."
-
-    input2 = "It was the best of times, it was the worst of times, it was the age of wisdom, it was the age of foolishness, it was the epoch of belief, it was the epoch of incredulity, it was the season of Light, it was the season of Darkness, it was the of hope, it was the winter of despair, we had everything before us, we had nothing before us, we were all going direct to Heaven, we were all going direct the other way – in short, the period was so far like the present period, that some of its noisiest authorities insisted on its being received, for good or for evil, in the superlative degree of comparison only..."
