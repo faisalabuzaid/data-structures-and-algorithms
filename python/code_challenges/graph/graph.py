@@ -1,3 +1,5 @@
+import collections
+
 class Node:
     def __init__(self, value):
         self.value = value
@@ -7,7 +9,7 @@ class Graph:
         This is the constructor method of a graph
         """
         self._adjacency_list = {}
-       
+
     def add_vertex(self, value):
         """
         This method is to add vertex to a graph
@@ -58,6 +60,29 @@ class Graph:
         """
         return len(self._adjacency_list)
 
+    def breadth_first(self, root):
+ 
+        visited = set()
+        queue = collections.deque([root])
+        result = []
+
+        while queue:
+ 
+            # Dequeue a vertex from
+            # queue and print it
+            vertex = queue.pop()
+            result.append(vertex)
+            visited.add(vertex)
+ 
+            # Get all adjacent vertices of the
+            # dequeued vertex s. If a adjacent
+            # has not been visited, then mark it
+            # visited and enqueue it
+            for neighbour in self._adjacency_list[vertex]:
+                if neighbour[0] not in visited:
+                    visited.add(neighbour[0])
+                    queue.append(neighbour[0])
+        return result
     
 if __name__ == "__main__":
     g = Graph()
@@ -76,4 +101,5 @@ if __name__ == "__main__":
     
     print(g.size())
     print(g.get_vertices())
-    print(g.get_neighbors('5'))
+    print(g.get_neighbors('10'))
+    print(g.breadth_first("5"))

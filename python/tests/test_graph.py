@@ -51,3 +51,8 @@ def test_empty_grapgh():
     actual = g.get_vertices()
     expected = None
     assert actual == expected
+
+def test_breadth_first(my_graph):
+    actual = my_graph.breadth_first('10')
+    expected = ['10', '5', '44', '9']
+    assert actual == expected
