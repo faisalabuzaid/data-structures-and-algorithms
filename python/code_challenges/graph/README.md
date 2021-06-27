@@ -16,7 +16,7 @@ A graph is a pictorial representation of a set of objects where some pairs of ob
     - 4 - Add any neighboring nodes that still need to be “visited” to the queue.
     - 5 - Remove the node we’ve visited from the queue.
 
-Worst Case Performance BFS traversal
+BFS traversal
 
 - Time compexity: O(n+m)
 - Space Complexity: O(n)
@@ -28,3 +28,7 @@ Worst Case Performance BFS traversal
 - Add a vertex
 - Add an edge
 - Creating a graph
+
+## White Board For BFS
+
+![](https://raw.githubusercontent.com/marvincolgin/data-structures-and-algorithms/master/whiteboards/binary_tree-breadth_first.jpg)
