@@ -72,7 +72,11 @@ class HashMap:
                 if current.value[0] == key:
                     return True
         return False
-
+    # def __str__(self):
+    #     result =""
+    #     for i in range(self.size):
+    #         result += f"{self.bucket[i]}, "
+    #     return result
 # test = HashMap()
 # test.add('ab', 'faisal')
 # test.add('ba', 'ahmad')
@@ -83,3 +87,12 @@ class HashMap:
 # print(test.get('ab'))
 # print(test.get('ba'))
 
+# table1 = HashMap()
+# table1.add("faisal", 1)
+# table1.add('lara','ahmad')
+# table1.add('sara','ahmad')
+# table2 = HashMap()
+# table1.add('faisal','abuzaid')
+# table1.add('lara','abuzaid')
+# table1.add('sara','abuzaid')
+# print(table1)
