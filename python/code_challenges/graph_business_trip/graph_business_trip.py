@@ -83,24 +83,32 @@ class Graph:
                     visited.add(neighbour[0])
                     queue.append(neighbour[0])
         return result
-        
+
+def search_flight(graph, lst):
+    cost = 0
+    flag = False
+    for i in range(len(lst)-1):
+        if lst[i] in graph.get_vertices():
+            for nieghbor in graph.get_neighbors(lst[i]):
+                if lst[i+1] == nieghbor[0]:
+                    flag = True
+                    cost += nieghbor[1]
+    return f'{flag}, {cost}$'
+
     
 if __name__ == "__main__":
     g = Graph()
     
-    g.add_vertex('10')
-    g.add_vertex('5')
-    g.add_vertex('9')
-    g.add_vertex('44')
-    g.add_edge('10', '5', 3)
-    g.add_edge('10', '10', 6)
-    g.add_edge('5', '44', 2)
-    g.add_edge('44', '9', 4)
-    g.add_edge('44', '10', 1)
-    g.add_edge('5', '10', 7)
-    g.add_edge('9', '10', 8)
-    
-    print(g.size())
-    print(g.get_vertices())
-    print(g.get_neighbors('10'))
-    print(g.breadth_first("5"))
+    g.add_vertex('amman')
+    g.add_vertex('irbid')
+    g.add_vertex('zarqa')
+    g.add_vertex('aqaba')
+    g.add_edge('amman', 'irbid', 30)
+    g.add_edge('irbid', 'amman', 30)
+    g.add_edge('irbid', 'zarqa', 15)
+    g.add_edge('zarqa', 'irbid', 15)
+    g.add_edge('irbid', 'aqaba', 90)
+    g.add_edge('aqaba', 'irbid', 90)
+
+ 
+    print(search_flight(g,['irbid', 'amman']))
