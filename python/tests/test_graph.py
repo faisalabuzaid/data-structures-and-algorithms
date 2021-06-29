@@ -1,4 +1,4 @@
-from code_challenges.graph.graph import Graph
+from code_challenges.graph_depth_first.graph_depth_first import Graph
 import pytest
 
 @pytest.fixture
@@ -55,4 +55,19 @@ def test_empty_grapgh():
 def test_breadth_first(my_graph):
     actual = my_graph.breadth_first('10')
     expected = ['10', '5', '44', '9']
+    assert actual == expected
+
+def test_depth_first():
+    my_graph = Graph()
+    graph2 = {"A": ["B", "C",'G','D',"E",'H',"F"],
+                "B": ['C','G'],
+                "C": ["G"],
+                "D": ['E','H','F'],
+                "E": ["D"],
+                "F": ['H'],
+                "H": ["D"],
+                "G":["C"],
+                }
+    actual = my_graph.dfs(graph2, "A")
+    expected = ['A', 'B', 'C', 'G', 'D', 'E', 'H', 'F']
     assert actual == expected
